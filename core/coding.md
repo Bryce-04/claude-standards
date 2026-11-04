@@ -32,7 +32,7 @@ Language-agnostic rules. A stack file overrides this file where they conflict. T
 ## Comments
 - Comment why, not what. If a comment explains what, rename or restructure instead.
 - Delete commented-out code (git remembers).
-- TODOs name an owner and context: `TODO(bryce): handle pagination once API supports it`.
+- TODOs name an owner and context: `TODO(owner): handle pagination once API supports it`.
 
 ## Dependencies
 - Prefer the standard library and existing dependencies before adding a new one.

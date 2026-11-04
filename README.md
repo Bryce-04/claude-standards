@@ -11,6 +11,8 @@ templates/    CLAUDE.md, README, and ADR templates to copy into projects
 scripts/      init-project.sh: sets a project up in one command
 ```
 
+Each stack folder can also hold a `tooling/` directory that mirrors a project root (CI workflow, `.gitignore`, Claude Code settings and formatter hook). `templates/common/` holds files every project gets (`.editorconfig`, PR template, ADR template).
+
 **Precedence when rules conflict:** the project's real tooling config (ESLint, ruff, tsconfig) > the project's own `CLAUDE.md` notes > the stack file > core.
 
 ## Use with Claude Code
@@ -19,9 +21,18 @@ scripts/      init-project.sh: sets a project up in one command
 ./scripts/init-project.sh web-frontend ~/code/my-app
 ```
 
-This copies `core/*.md` and the chosen stack into `my-app/.claude/conventions/` and creates a `CLAUDE.md` that imports them. Then open `CLAUDE.md`, fill in the project name, commands, and notes, and commit the whole thing.
+This does four things:
 
-Copies, rather than links, are on purpose: the project stays reproducible and a convention change here does not silently alter old projects. To update a project, re-run the script (it refreshes `.claude/conventions/` and leaves your `CLAUDE.md` alone).
+1. Copies `core/*.md` and the chosen stack into `my-app/.claude/conventions/`.
+2. Copies shared files and the stack's tooling (CI workflow, `.gitignore`, `.editorconfig`, PR and ADR templates, `.claude/settings.json` with a format-on-edit hook).
+3. Creates `README.md` and a `CLAUDE.md` that imports the conventions.
+4. Skips any file that already exists, so it never overwrites your project's own files.
+
+Then fill in `CLAUDE.md` and `README.md`, check that the commands in `.github/workflows/ci.yml` match your package scripts, and commit.
+
+On Windows, run the script from Git Bash or WSL.
+
+Copies, rather than links, are on purpose: the project stays reproducible and a convention change here does not silently alter old projects. To update a project, re-run the script. It refreshes `.claude/conventions/` and leaves everything else alone.
 
 Run `/memory` inside Claude Code to confirm the imported files are actually being loaded.
 
@@ -33,7 +44,8 @@ Upload everything in `core/` plus the one `stack.md` you need to the project's k
 
 1. `cp -r stacks/_template stacks/<new-stack>` (for example `ios-swift`, `node-api`, `data-science`)
 2. Fill in `stack.md`. Keep it to roughly a page.
-3. Run the init script with the new stack name.
+3. Optionally add `tooling/` next to it (CI, `.gitignore`, `.claude/settings.json`) laid out like a project root.
+4. Run the init script with the new stack name.
 
 ## Keeping it good
 
