@@ -2,6 +2,8 @@
 
 Reusable markdown conventions for keeping code written with Claude (Claude Code and Claude Projects) consistent and at a professional standard.
 
+New here? Read [GUIDE.md](GUIDE.md) for a plain explanation of every part of this repo.
+
 ## How it's layered
 
 ```
