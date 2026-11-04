@@ -68,7 +68,7 @@ copy_new "$ROOT/templates/README.project.md" "$TARGET/README.md"
 if [[ -e "$TARGET/CLAUDE.md" ]]; then
   echo "  skipped (exists): CLAUDE.md"
   echo "Make sure CLAUDE.md imports these files:"
-  for f in workflow coding testing documentation git-and-building review-checklist stack; do
+  for f in claude-behavior workflow coding security testing documentation git-and-building review-checklist stack; do
     echo "  @.claude/conventions/$f.md"
   done
 else

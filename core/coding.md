@@ -24,10 +24,7 @@ Language-agnostic rules. A stack file overrides this file where they conflict. T
 - Fail fast on invalid config at startup.
 
 ## Security
-- No secrets in code or git history. Use environment variables and commit a `.env.example`.
-- Parameterized queries only. Never build SQL by string concatenation.
-- Treat all external input as untrusted. Escape output, never use `eval`-style execution.
-- Least privilege for tokens, keys, and permissions.
+See `security.md`. It applies to every change.
 
 ## Comments
 - Comment why, not what. If a comment explains what, rename or restructure instead.

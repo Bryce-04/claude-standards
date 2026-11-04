@@ -16,8 +16,10 @@
 ## Conventions
 Precedence: project tooling config (linters, formatters, tsconfig) > this file's project notes > `stack.md` > core files.
 
+@.claude/conventions/claude-behavior.md
 @.claude/conventions/workflow.md
 @.claude/conventions/coding.md
+@.claude/conventions/security.md
 @.claude/conventions/testing.md
 @.claude/conventions/documentation.md
 @.claude/conventions/git-and-building.md

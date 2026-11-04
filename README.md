@@ -5,13 +5,14 @@ Reusable markdown conventions for keeping code written with Claude (Claude Code 
 ## How it's layered
 
 ```
-core/         Always applies: workflow, coding, testing, documentation, git/building, review checklist
-stacks/       One per kind of project: web-frontend, mobile, python-backend (add your own)
+core/         Always applies: Claude behavior, workflow, coding, security, testing, documentation, git/building, review checklist
+stacks/       One per kind of project: web-frontend, mobile, node-api, python-backend,
+              data-science, ios-swift, cli-library (add your own)
 templates/    CLAUDE.md, README, and ADR templates to copy into projects
 scripts/      init-project.sh: sets a project up in one command
 ```
 
-Each stack folder can also hold a `tooling/` directory that mirrors a project root (CI workflow, `.gitignore`, Claude Code settings and formatter hook). `templates/common/` holds files every project gets (`.editorconfig`, PR template, ADR template).
+Each stack folder can also hold a `tooling/` directory that mirrors a project root (CI workflow, `.gitignore`, Claude Code settings and formatter hook). `templates/common/` holds files every project gets (`.editorconfig`, PR/ADR templates, `CONTRIBUTING.md`, `SECURITY.md`, Dependabot config). `templates/LICENSE.MIT` is not copied automatically because the license is your choice..
 
 **Precedence when rules conflict:** the project's real tooling config (ESLint, ruff, tsconfig) > the project's own `CLAUDE.md` notes > the stack file > core.
 
