@@ -8,7 +8,8 @@ process.stdin.on("end", () => {
   try {
     const file = JSON.parse(input).tool_input?.file_path;
     if (file) {
-      spawnSync("npx", ["--no-install", "prettier", "--write", "--ignore-unknown", file], {
+      // Single command string (needed so npx resolves on Windows).
+      spawnSync(`npx --no-install prettier --write --ignore-unknown "${file}"`, {
         stdio: "ignore",
         shell: true,
       });
